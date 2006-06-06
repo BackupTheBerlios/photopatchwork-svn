@@ -43,17 +43,17 @@ namespace PhotoPatchworkPrinter
 			this.CboRotation = new System.Windows.Forms.ComboBox();
 			this.LblRotation = new System.Windows.Forms.Label();
 			this.LblFlip = new System.Windows.Forms.Label();
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
-			this.label2 = new System.Windows.Forms.Label();
-			this.trackBar1 = new System.Windows.Forms.TrackBar();
-			this.trackBar2 = new System.Windows.Forms.TrackBar();
-			this.label1 = new System.Windows.Forms.Label();
-			this.trackBar3 = new System.Windows.Forms.TrackBar();
-			this.label3 = new System.Windows.Forms.Label();
+			this.CboFlip = new System.Windows.Forms.ComboBox();
+			this.LblZoom = new System.Windows.Forms.Label();
+			this.TrkBarZoom = new System.Windows.Forms.TrackBar();
+			this.TrkBarTop = new System.Windows.Forms.TrackBar();
+			this.LblTop = new System.Windows.Forms.Label();
+			this.TrkBarLeft = new System.Windows.Forms.TrackBar();
+			this.LblLeft = new System.Windows.Forms.Label();
 			this.PicturePanel.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
-			((System.ComponentModel.ISupportInitialize)(this.trackBar3)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.TrkBarZoom)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.TrkBarTop)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.TrkBarLeft)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// PicturePanel
@@ -117,11 +117,10 @@ namespace PhotoPatchworkPrinter
 			// LblRotation
 			// 
 			this.LblRotation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.LblRotation.AutoSize = true;
 			this.LblRotation.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.LblRotation.Location = new System.Drawing.Point(12, 602);
+			this.LblRotation.Location = new System.Drawing.Point(12, 598);
 			this.LblRotation.Name = "LblRotation";
-			this.LblRotation.Size = new System.Drawing.Size(62, 13);
+			this.LblRotation.Size = new System.Drawing.Size(62, 21);
 			this.LblRotation.TabIndex = 4;
 			this.LblRotation.Text = "Rotation :";
 			this.LblRotation.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -129,111 +128,113 @@ namespace PhotoPatchworkPrinter
 			// LblFlip
 			// 
 			this.LblFlip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.LblFlip.AutoSize = true;
 			this.LblFlip.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.LblFlip.Location = new System.Drawing.Point(134, 602);
+			this.LblFlip.Location = new System.Drawing.Point(134, 599);
 			this.LblFlip.Name = "LblFlip";
-			this.LblFlip.Size = new System.Drawing.Size(32, 13);
+			this.LblFlip.Size = new System.Drawing.Size(32, 21);
 			this.LblFlip.TabIndex = 6;
 			this.LblFlip.Text = "Flip :";
 			this.LblFlip.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
-			// comboBox1
+			// CboFlip
 			// 
-			this.comboBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Items.AddRange(new object[] {
+			this.CboFlip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.CboFlip.FormattingEnabled = true;
+			this.CboFlip.Items.AddRange(new object[] {
 									"None",
 									"Horizontal",
 									"Vertical",
 									"Both"});
-			this.comboBox1.Location = new System.Drawing.Point(172, 599);
-			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(73, 21);
-			this.comboBox1.TabIndex = 5;
+			this.CboFlip.Location = new System.Drawing.Point(172, 599);
+			this.CboFlip.Name = "CboFlip";
+			this.CboFlip.Size = new System.Drawing.Size(73, 21);
+			this.CboFlip.TabIndex = 5;
 			// 
-			// label2
+			// LblZoom
 			// 
-			this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.label2.AutoSize = true;
-			this.label2.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label2.Location = new System.Drawing.Point(12, 569);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(45, 13);
-			this.label2.TabIndex = 10;
-			this.label2.Text = "Zoom :";
-			this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.LblZoom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.LblZoom.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.LblZoom.Location = new System.Drawing.Point(12, 569);
+			this.LblZoom.Name = "LblZoom";
+			this.LblZoom.Size = new System.Drawing.Size(62, 24);
+			this.LblZoom.TabIndex = 10;
+			this.LblZoom.Text = "Zoom :";
+			this.LblZoom.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
-			// trackBar1
+			// TrkBarZoom
 			// 
-			this.trackBar1.AutoSize = false;
-			this.trackBar1.LargeChange = 50;
-			this.trackBar1.Location = new System.Drawing.Point(80, 569);
-			this.trackBar1.Maximum = 1000;
-			this.trackBar1.Name = "trackBar1";
-			this.trackBar1.Size = new System.Drawing.Size(646, 24);
-			this.trackBar1.TabIndex = 11;
-			this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.None;
+			this.TrkBarZoom.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+									| System.Windows.Forms.AnchorStyles.Right)));
+			this.TrkBarZoom.AutoSize = false;
+			this.TrkBarZoom.LargeChange = 50;
+			this.TrkBarZoom.Location = new System.Drawing.Point(80, 569);
+			this.TrkBarZoom.Maximum = 1000;
+			this.TrkBarZoom.Name = "TrkBarZoom";
+			this.TrkBarZoom.Size = new System.Drawing.Size(646, 24);
+			this.TrkBarZoom.TabIndex = 11;
+			this.TrkBarZoom.TickStyle = System.Windows.Forms.TickStyle.None;
 			// 
-			// trackBar2
+			// TrkBarTop
 			// 
-			this.trackBar2.AutoSize = false;
-			this.trackBar2.LargeChange = 50;
-			this.trackBar2.Location = new System.Drawing.Point(80, 539);
-			this.trackBar2.Maximum = 1000;
-			this.trackBar2.Name = "trackBar2";
-			this.trackBar2.Size = new System.Drawing.Size(646, 24);
-			this.trackBar2.TabIndex = 13;
-			this.trackBar2.TickStyle = System.Windows.Forms.TickStyle.None;
+			this.TrkBarTop.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+									| System.Windows.Forms.AnchorStyles.Right)));
+			this.TrkBarTop.AutoSize = false;
+			this.TrkBarTop.LargeChange = 50;
+			this.TrkBarTop.Location = new System.Drawing.Point(80, 539);
+			this.TrkBarTop.Maximum = 1000;
+			this.TrkBarTop.Name = "TrkBarTop";
+			this.TrkBarTop.Size = new System.Drawing.Size(646, 24);
+			this.TrkBarTop.TabIndex = 13;
+			this.TrkBarTop.TickStyle = System.Windows.Forms.TickStyle.None;
 			// 
-			// label1
+			// LblTop
 			// 
-			this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.label1.AutoSize = true;
-			this.label1.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label1.Location = new System.Drawing.Point(12, 539);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(34, 13);
-			this.label1.TabIndex = 12;
-			this.label1.Text = "Top :";
-			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.LblTop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.LblTop.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.LblTop.Location = new System.Drawing.Point(12, 539);
+			this.LblTop.Name = "LblTop";
+			this.LblTop.Size = new System.Drawing.Size(62, 24);
+			this.LblTop.TabIndex = 12;
+			this.LblTop.Text = "Top :";
+			this.LblTop.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
-			// trackBar3
+			// TrkBarLeft
 			// 
-			this.trackBar3.AutoSize = false;
-			this.trackBar3.LargeChange = 50;
-			this.trackBar3.Location = new System.Drawing.Point(80, 509);
-			this.trackBar3.Maximum = 1000;
-			this.trackBar3.Name = "trackBar3";
-			this.trackBar3.Size = new System.Drawing.Size(646, 24);
-			this.trackBar3.TabIndex = 15;
-			this.trackBar3.TickStyle = System.Windows.Forms.TickStyle.None;
+			this.TrkBarLeft.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+									| System.Windows.Forms.AnchorStyles.Right)));
+			this.TrkBarLeft.AutoSize = false;
+			this.TrkBarLeft.LargeChange = 50;
+			this.TrkBarLeft.Location = new System.Drawing.Point(80, 509);
+			this.TrkBarLeft.Maximum = 1000;
+			this.TrkBarLeft.Name = "TrkBarLeft";
+			this.TrkBarLeft.Size = new System.Drawing.Size(646, 24);
+			this.TrkBarLeft.TabIndex = 15;
+			this.TrkBarLeft.TickStyle = System.Windows.Forms.TickStyle.None;
 			// 
-			// label3
+			// LblLeft
 			// 
-			this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-			this.label3.AutoSize = true;
-			this.label3.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label3.Location = new System.Drawing.Point(12, 509);
-			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(35, 13);
-			this.label3.TabIndex = 14;
-			this.label3.Text = "Left :";
-			this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+			this.LblLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+			this.LblLeft.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.LblLeft.Location = new System.Drawing.Point(12, 509);
+			this.LblLeft.Name = "LblLeft";
+			this.LblLeft.Size = new System.Drawing.Size(62, 24);
+			this.LblLeft.TabIndex = 14;
+			this.LblLeft.Text = "Left :";
+			this.LblLeft.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// CroppingDialog
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(738, 633);
-			this.Controls.Add(this.trackBar3);
-			this.Controls.Add(this.label3);
-			this.Controls.Add(this.trackBar2);
-			this.Controls.Add(this.label1);
-			this.Controls.Add(this.trackBar1);
-			this.Controls.Add(this.label2);
+			this.Controls.Add(this.TrkBarLeft);
+			this.Controls.Add(this.LblLeft);
+			this.Controls.Add(this.TrkBarTop);
+			this.Controls.Add(this.LblTop);
+			this.Controls.Add(this.TrkBarZoom);
+			this.Controls.Add(this.LblZoom);
 			this.Controls.Add(this.LblFlip);
-			this.Controls.Add(this.comboBox1);
+			this.Controls.Add(this.CboFlip);
 			this.Controls.Add(this.LblRotation);
 			this.Controls.Add(this.CboRotation);
 			this.Controls.Add(this.BtnOk);
@@ -243,21 +244,20 @@ namespace PhotoPatchworkPrinter
 			this.Text = "CroppingWindow";
 			this.Load += new System.EventHandler(this.CroppingWindowLoad);
 			this.PicturePanel.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
-			((System.ComponentModel.ISupportInitialize)(this.trackBar3)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.TrkBarZoom)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.TrkBarTop)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.TrkBarLeft)).EndInit();
 			this.ResumeLayout(false);
-			this.PerformLayout();
 		}
+		private System.Windows.Forms.ComboBox CboFlip;
+		private System.Windows.Forms.Label LblZoom;
+		private System.Windows.Forms.TrackBar TrkBarZoom;
+		private System.Windows.Forms.TrackBar TrkBarTop;
+		private System.Windows.Forms.Label LblTop;
+		private System.Windows.Forms.TrackBar TrkBarLeft;
+		private System.Windows.Forms.Label LblLeft;
 		private System.Windows.Forms.Panel SelectionPanel;
-		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.TrackBar trackBar3;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TrackBar trackBar2;
-		private System.Windows.Forms.TrackBar trackBar1;
-		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label LblFlip;
-		private System.Windows.Forms.ComboBox comboBox1;
 		private System.Windows.Forms.ComboBox CboRotation;
 		private System.Windows.Forms.Label LblRotation;
 		private System.Windows.Forms.Button BtnOk;

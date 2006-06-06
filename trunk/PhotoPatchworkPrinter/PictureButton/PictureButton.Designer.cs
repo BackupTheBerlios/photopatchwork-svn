@@ -39,7 +39,7 @@ namespace PictureButton
 			this.PicturePanel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
 									| System.Windows.Forms.AnchorStyles.Left) 
 									| System.Windows.Forms.AnchorStyles.Right)));
-			this.PicturePanel.BackColor = System.Drawing.Color.Transparent;
+			this.PicturePanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(223)))), ((int)(((byte)(223)))), ((int)(((byte)(255)))));
 			this.PicturePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
 			this.PicturePanel.Controls.Add(this.toolStrip);
 			this.PicturePanel.Location = new System.Drawing.Point(0, 0);
@@ -65,11 +65,11 @@ namespace PictureButton
 									this.CropButton,
 									this.DeleteButton});
 			this.toolStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
-			this.toolStrip.Location = new System.Drawing.Point(198, 113);
+			this.toolStrip.Location = new System.Drawing.Point(206, 132);
 			this.toolStrip.Name = "toolStrip";
-			this.toolStrip.Padding = new System.Windows.Forms.Padding(0, 0, 0, 0);
+			this.toolStrip.Padding = new System.Windows.Forms.Padding(0);
 			this.toolStrip.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-			this.toolStrip.Size = new System.Drawing.Size(31, 78);
+			this.toolStrip.Size = new System.Drawing.Size(23, 59);
 			this.toolStrip.TabIndex = 2;
 			// 
 			// OpenButton
@@ -78,7 +78,7 @@ namespace PictureButton
 			this.OpenButton.Image = ((System.Drawing.Image)(resources.GetObject("OpenButton.Image")));
 			this.OpenButton.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.OpenButton.Name = "OpenButton";
-			this.OpenButton.Size = new System.Drawing.Size(30, 16);
+			this.OpenButton.Size = new System.Drawing.Size(22, 16);
 			this.OpenButton.Click += new System.EventHandler(this.OpenButtonClick);
 			// 
 			// CropButton
@@ -87,7 +87,7 @@ namespace PictureButton
 			this.CropButton.Image = ((System.Drawing.Image)(resources.GetObject("CropButton.Image")));
 			this.CropButton.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.CropButton.Name = "CropButton";
-			this.CropButton.Size = new System.Drawing.Size(30, 16);
+			this.CropButton.Size = new System.Drawing.Size(22, 16);
 			this.CropButton.Click += new System.EventHandler(this.CropButtonClick);
 			// 
 			// DeleteButton
@@ -96,7 +96,7 @@ namespace PictureButton
 			this.DeleteButton.Image = ((System.Drawing.Image)(resources.GetObject("DeleteButton.Image")));
 			this.DeleteButton.ImageTransparentColor = System.Drawing.Color.Magenta;
 			this.DeleteButton.Name = "DeleteButton";
-			this.DeleteButton.Size = new System.Drawing.Size(30, 16);
+			this.DeleteButton.Size = new System.Drawing.Size(22, 16);
 			this.DeleteButton.Click += new System.EventHandler(this.DeleteButtonClick);
 			// 
 			// PictureButton

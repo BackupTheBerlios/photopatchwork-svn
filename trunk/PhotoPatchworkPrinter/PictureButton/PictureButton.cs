@@ -73,7 +73,7 @@ namespace PictureButton
 				_PictureInfos.Top = _PictureInfos.Bottom = (int)(((float)image.Height-(float)image.Width/destRatio)/(float)2);
 				MessageBox.Show("Top : "+_PictureInfos.Top);
 			}
-			this.BackgroundImage = Thumbnail(image);
+			this.PicturePanel.BackgroundImage = Thumbnail(image);
 		}
 
 		public Image CroppedImage() {
