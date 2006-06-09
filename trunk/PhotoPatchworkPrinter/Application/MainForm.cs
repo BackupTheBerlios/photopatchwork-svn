@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using PhotoPatchworkLibs;
 
 namespace PhotoPatchworkPrinter
 {
@@ -81,46 +82,47 @@ namespace PhotoPatchworkPrinter
 		void PictureButtonDelete(object sender, EventArgs e)
 		{
 			PictureButton.PictureButton pb = (PictureButton.PictureButton)sender;
-			PictureButton.PictureInfosStruct pi = pb.PictureInfos;
-			pi.PicturePath = null;
-			pb.PictureInfos = pi;
+			ImageInfos pi = pb.ImageInfos;
+			pi.Path = null;
+			pb.ImageInfos = pi;
 		}
 		
 		void PictureButtonCrop(object sender, EventArgs e)
 		{
-			/*PictureButton.PictureButton pb = (PictureButton.PictureButton)sender;
-			PictureButton.PictureInfosStruct pi = pb.PictureInfos;
-			pi.PicturePath = null;
-			pb.PictureInfos = pi;*/
-			DialogResult dr = croppingDialog.ShowDialog();
-			
+			PictureButton.PictureButton pb = (PictureButton.PictureButton)sender;
+
+			croppingDialog.ImageInfos = pb.ImageInfos;
+			if (croppingDialog.ShowDialog() == DialogResult.OK) {
+				pb.ImageInfos = croppingDialog.ImageInfos;
+				pb.UpdateThumbnail();
+			}
 		}
 		
 		void PictureButtonOpen(object sender, EventArgs e)
 		{
 			PictureButton.PictureButton pb = (PictureButton.PictureButton)sender;
 			if (openFileDialog.ShowDialog() == DialogResult.OK) {
-				PictureButton.PictureInfosStruct pi = pb.PictureInfos;
-				pi.PicturePath = openFileDialog.FileName;
-				pb.PictureInfos = pi;
+				ImageInfos pi = pb.ImageInfos;
+				pi.Path = openFileDialog.FileName;
+				pb.ImageInfos = pi;
 			}
 		}
 
 		void MainFormLoad(object sender, System.EventArgs e)
 		{
-			this.resizePicturesTable(210, 297, 40, 50);
+			this.resizePicturesTable(new Size(210, 297), new Size(40, 50));
 		}
 		
 		/// <summary>
-		/// Length aregiven in milimeters.
+		/// Lengths are given in milimeters.
 		/// </summary>
-		void resizePicturesTable(int pageWidth, int pageHeight, int pictureWidth, int pictureHeight) {
-			// TODO add margins (or directlty replace with page templates)
-			int ncols = (int)((float)pageWidth/(float)pictureWidth);
-			int nrows = (int)((float)pageHeight/(float)pictureHeight);
+		void resizePicturesTable(Size PageSize, Size PhotoSize) {
+			// TODO add margins (or directlty replace with page templates !!!)
+			int ncols = (int)((float)PageSize.Width/(float)PhotoSize.Width);
+			int nrows = (int)((float)PageSize.Height/(float)PhotoSize.Height);
 			float zoomFactor = 3F;
-			int picturePxWidth = (int)((float)pictureWidth * zoomFactor);
-			int picturePxHeight = (int)((float)pictureHeight * zoomFactor);
+			int picturePxWidth = (int)((float)PhotoSize.Width * zoomFactor);
+			int picturePxHeight = (int)((float)PhotoSize.Height * zoomFactor);
 
 			this.PicturesTable.ColumnCount = ncols;
 			this.PicturesTable.ColumnStyles.Clear();
@@ -143,10 +145,10 @@ namespace PhotoPatchworkPrinter
 					pb.Open += new PictureButton.PictureButton.OpenEventHandler(this.PictureButtonOpen);
 					pb.Delete += new PictureButton.PictureButton.DeleteEventHandler(this.PictureButtonDelete);
 					pb.Crop += new PictureButton.PictureButton.CropEventHandler(this.PictureButtonCrop);
-					PictureButton.PictureInfosStruct pis = new PictureButton.PictureInfosStruct();
-					pis.Width = pictureWidth;
-					pis.Height = pictureHeight;
-					pb.PictureInfos = pis;
+					ImageInfos pis = new ImageInfos();
+					pis.Crop = new Rectangle(-1, -1, -1, -1);
+					pis.Size = new Size(PhotoSize.Width, PhotoSize.Height);
+					pb.ImageInfos = pis;
 					this.PicturesTable.Controls.Add(pb, col, row);
 				}
 			}

@@ -62,17 +62,18 @@ namespace PhotoPatchworkPrinter
 									| System.Windows.Forms.AnchorStyles.Left) 
 									| System.Windows.Forms.AnchorStyles.Right)));
 			this.PicturePanel.BackColor = System.Drawing.Color.White;
+			this.PicturePanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 			this.PicturePanel.Controls.Add(this.SelectionPanel);
 			this.PicturePanel.Location = new System.Drawing.Point(12, 12);
 			this.PicturePanel.Name = "PicturePanel";
-			this.PicturePanel.Size = new System.Drawing.Size(714, 491);
+			this.PicturePanel.Size = new System.Drawing.Size(477, 310);
 			this.PicturePanel.TabIndex = 0;
 			// 
 			// SelectionPanel
 			// 
 			this.SelectionPanel.BackColor = System.Drawing.Color.Transparent;
 			this.SelectionPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-			this.SelectionPanel.ForeColor = System.Drawing.Color.Gray;
+			this.SelectionPanel.ForeColor = System.Drawing.Color.Red;
 			this.SelectionPanel.Location = new System.Drawing.Point(12, 12);
 			this.SelectionPanel.Name = "SelectionPanel";
 			this.SelectionPanel.Size = new System.Drawing.Size(248, 187);
@@ -81,7 +82,7 @@ namespace PhotoPatchworkPrinter
 			// BtnAnnuler
 			// 
 			this.BtnAnnuler.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.BtnAnnuler.Location = new System.Drawing.Point(651, 596);
+			this.BtnAnnuler.Location = new System.Drawing.Point(414, 415);
 			this.BtnAnnuler.Name = "BtnAnnuler";
 			this.BtnAnnuler.Size = new System.Drawing.Size(75, 25);
 			this.BtnAnnuler.TabIndex = 1;
@@ -92,7 +93,7 @@ namespace PhotoPatchworkPrinter
 			// BtnOk
 			// 
 			this.BtnOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.BtnOk.Location = new System.Drawing.Point(570, 596);
+			this.BtnOk.Location = new System.Drawing.Point(333, 415);
 			this.BtnOk.Name = "BtnOk";
 			this.BtnOk.Size = new System.Drawing.Size(75, 25);
 			this.BtnOk.TabIndex = 2;
@@ -109,7 +110,7 @@ namespace PhotoPatchworkPrinter
 									"90°",
 									"180°",
 									"270°"});
-			this.CboRotation.Location = new System.Drawing.Point(80, 599);
+			this.CboRotation.Location = new System.Drawing.Point(80, 418);
 			this.CboRotation.Name = "CboRotation";
 			this.CboRotation.Size = new System.Drawing.Size(48, 21);
 			this.CboRotation.TabIndex = 3;
@@ -118,7 +119,7 @@ namespace PhotoPatchworkPrinter
 			// 
 			this.LblRotation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.LblRotation.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.LblRotation.Location = new System.Drawing.Point(12, 598);
+			this.LblRotation.Location = new System.Drawing.Point(12, 417);
 			this.LblRotation.Name = "LblRotation";
 			this.LblRotation.Size = new System.Drawing.Size(62, 21);
 			this.LblRotation.TabIndex = 4;
@@ -129,7 +130,7 @@ namespace PhotoPatchworkPrinter
 			// 
 			this.LblFlip.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.LblFlip.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.LblFlip.Location = new System.Drawing.Point(134, 599);
+			this.LblFlip.Location = new System.Drawing.Point(134, 418);
 			this.LblFlip.Name = "LblFlip";
 			this.LblFlip.Size = new System.Drawing.Size(32, 21);
 			this.LblFlip.TabIndex = 6;
@@ -145,7 +146,7 @@ namespace PhotoPatchworkPrinter
 									"Horizontal",
 									"Vertical",
 									"Both"});
-			this.CboFlip.Location = new System.Drawing.Point(172, 599);
+			this.CboFlip.Location = new System.Drawing.Point(172, 418);
 			this.CboFlip.Name = "CboFlip";
 			this.CboFlip.Size = new System.Drawing.Size(73, 21);
 			this.CboFlip.TabIndex = 5;
@@ -154,7 +155,7 @@ namespace PhotoPatchworkPrinter
 			// 
 			this.LblZoom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.LblZoom.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.LblZoom.Location = new System.Drawing.Point(12, 569);
+			this.LblZoom.Location = new System.Drawing.Point(12, 388);
 			this.LblZoom.Name = "LblZoom";
 			this.LblZoom.Size = new System.Drawing.Size(62, 24);
 			this.LblZoom.TabIndex = 10;
@@ -167,12 +168,13 @@ namespace PhotoPatchworkPrinter
 									| System.Windows.Forms.AnchorStyles.Right)));
 			this.TrkBarZoom.AutoSize = false;
 			this.TrkBarZoom.LargeChange = 50;
-			this.TrkBarZoom.Location = new System.Drawing.Point(80, 569);
+			this.TrkBarZoom.Location = new System.Drawing.Point(80, 388);
 			this.TrkBarZoom.Maximum = 1000;
 			this.TrkBarZoom.Name = "TrkBarZoom";
-			this.TrkBarZoom.Size = new System.Drawing.Size(646, 24);
+			this.TrkBarZoom.Size = new System.Drawing.Size(409, 24);
 			this.TrkBarZoom.TabIndex = 11;
 			this.TrkBarZoom.TickStyle = System.Windows.Forms.TickStyle.None;
+			this.TrkBarZoom.ValueChanged += new System.EventHandler(this.TrkBarsValueChanged);
 			// 
 			// TrkBarTop
 			// 
@@ -180,18 +182,19 @@ namespace PhotoPatchworkPrinter
 									| System.Windows.Forms.AnchorStyles.Right)));
 			this.TrkBarTop.AutoSize = false;
 			this.TrkBarTop.LargeChange = 50;
-			this.TrkBarTop.Location = new System.Drawing.Point(80, 539);
+			this.TrkBarTop.Location = new System.Drawing.Point(80, 358);
 			this.TrkBarTop.Maximum = 1000;
 			this.TrkBarTop.Name = "TrkBarTop";
-			this.TrkBarTop.Size = new System.Drawing.Size(646, 24);
+			this.TrkBarTop.Size = new System.Drawing.Size(409, 24);
 			this.TrkBarTop.TabIndex = 13;
 			this.TrkBarTop.TickStyle = System.Windows.Forms.TickStyle.None;
+			this.TrkBarTop.ValueChanged += new System.EventHandler(this.TrkBarsValueChanged);
 			// 
 			// LblTop
 			// 
 			this.LblTop.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.LblTop.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.LblTop.Location = new System.Drawing.Point(12, 539);
+			this.LblTop.Location = new System.Drawing.Point(12, 358);
 			this.LblTop.Name = "LblTop";
 			this.LblTop.Size = new System.Drawing.Size(62, 24);
 			this.LblTop.TabIndex = 12;
@@ -204,18 +207,19 @@ namespace PhotoPatchworkPrinter
 									| System.Windows.Forms.AnchorStyles.Right)));
 			this.TrkBarLeft.AutoSize = false;
 			this.TrkBarLeft.LargeChange = 50;
-			this.TrkBarLeft.Location = new System.Drawing.Point(80, 509);
+			this.TrkBarLeft.Location = new System.Drawing.Point(80, 328);
 			this.TrkBarLeft.Maximum = 1000;
 			this.TrkBarLeft.Name = "TrkBarLeft";
-			this.TrkBarLeft.Size = new System.Drawing.Size(646, 24);
+			this.TrkBarLeft.Size = new System.Drawing.Size(409, 24);
 			this.TrkBarLeft.TabIndex = 15;
 			this.TrkBarLeft.TickStyle = System.Windows.Forms.TickStyle.None;
+			this.TrkBarLeft.ValueChanged += new System.EventHandler(this.TrkBarsValueChanged);
 			// 
 			// LblLeft
 			// 
 			this.LblLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
 			this.LblLeft.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.LblLeft.Location = new System.Drawing.Point(12, 509);
+			this.LblLeft.Location = new System.Drawing.Point(12, 328);
 			this.LblLeft.Name = "LblLeft";
 			this.LblLeft.Size = new System.Drawing.Size(62, 24);
 			this.LblLeft.TabIndex = 14;
@@ -226,7 +230,7 @@ namespace PhotoPatchworkPrinter
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(738, 633);
+			this.ClientSize = new System.Drawing.Size(501, 452);
 			this.Controls.Add(this.TrkBarLeft);
 			this.Controls.Add(this.LblLeft);
 			this.Controls.Add(this.TrkBarTop);
@@ -249,9 +253,9 @@ namespace PhotoPatchworkPrinter
 			((System.ComponentModel.ISupportInitialize)(this.TrkBarLeft)).EndInit();
 			this.ResumeLayout(false);
 		}
+		private System.Windows.Forms.TrackBar TrkBarZoom;
 		private System.Windows.Forms.ComboBox CboFlip;
 		private System.Windows.Forms.Label LblZoom;
-		private System.Windows.Forms.TrackBar TrkBarZoom;
 		private System.Windows.Forms.TrackBar TrkBarTop;
 		private System.Windows.Forms.Label LblTop;
 		private System.Windows.Forms.TrackBar TrkBarLeft;
@@ -263,6 +267,5 @@ namespace PhotoPatchworkPrinter
 		private System.Windows.Forms.Button BtnOk;
 		private System.Windows.Forms.Button BtnAnnuler;
 		private System.Windows.Forms.Panel PicturePanel;
-		
 	}
 }

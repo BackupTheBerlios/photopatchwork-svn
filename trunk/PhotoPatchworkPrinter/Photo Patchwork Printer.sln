@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PictureButton", "PictureBut
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoPatchworkPrinter", "Application\PhotoPatchworkPrinter.csproj", "{FBAFFFC6-7EF2-4730-896D-0E7D1A68C661}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotoPatchworkLibs", "PhotoPatchworkLibs\PhotoPatchworkLibs.csproj", "{9BD962B6-70E9-4387-BD9E-0DAEE5C05EA0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,13 @@ Global
 		{FBAFFFC6-7EF2-4730-896D-0E7D1A68C661}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FBAFFFC6-7EF2-4730-896D-0E7D1A68C661}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FBAFFFC6-7EF2-4730-896D-0E7D1A68C661}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BD962B6-70E9-4387-BD9E-0DAEE5C05EA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BD962B6-70E9-4387-BD9E-0DAEE5C05EA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BD962B6-70E9-4387-BD9E-0DAEE5C05EA0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BD962B6-70E9-4387-BD9E-0DAEE5C05EA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7062B942-8742-4934-B3A1-5821F4BEA439}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7062B942-8742-4934-B3A1-5821F4BEA439}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7062B942-8742-4934-B3A1-5821F4BEA439}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7062B942-8742-4934-B3A1-5821F4BEA439}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 EndGlobal

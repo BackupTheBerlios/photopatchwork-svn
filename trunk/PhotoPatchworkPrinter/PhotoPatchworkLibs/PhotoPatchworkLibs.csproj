@@ -1,11 +1,11 @@
 ﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <OutputType>Library</OutputType>
-    <RootNamespace>PictureButton</RootNamespace>
-    <AssemblyName>PictureButton</AssemblyName>
+    <RootNamespace>PhotoPatchworkLibs</RootNamespace>
+    <AssemblyName>PhotoPatchworkLibs</AssemblyName>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{95A2E4B8-1DA4-438B-B6D6-60E263403F0F}</ProjectGuid>
+    <ProjectGuid>{9BD962B6-70E9-4387-BD9E-0DAEE5C05EA0}</ProjectGuid>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <OutputPath>bin\Debug\</OutputPath>
@@ -25,26 +25,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PictureButton.cs" />
-    <Compile Include="PictureButton.Designer.cs">
-      <DependentUpon>PictureButton.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Imaging.cs" />
     <Compile Include="AssemblyInfo.cs" />
-    <EmbeddedResource Include="PictureButton.resx">
-      <DependentUpon>PictureButton.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\PhotoPatchworkLibs\PhotoPatchworkLibs.csproj">
-      <Project>{9BD962B6-70E9-4387-BD9E-0DAEE5C05EA0}</Project>
-      <Name>PhotoPatchworkLibs</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
 </Project>

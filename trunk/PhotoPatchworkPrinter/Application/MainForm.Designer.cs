@@ -122,15 +122,8 @@ namespace PhotoPatchworkPrinter
 			// croppingDialog
 			// 
 			this.croppingDialog.ClientSize = new System.Drawing.Size(456, 311);
-			this.croppingDialog.CropBottom = ((long)(0));
-			this.croppingDialog.CropLeft = ((long)(0));
-			this.croppingDialog.CropRight = ((long)(0));
-			this.croppingDialog.CropTop = ((long)(0));
-			this.croppingDialog.Flip = PictureButton.Flips.None;
 			this.croppingDialog.Location = new System.Drawing.Point(22, 59);
 			this.croppingDialog.Name = "croppingDialog";
-			this.croppingDialog.PicturePath = null;
-			this.croppingDialog.Rotate = PictureButton.Rotations.Deg0;
 			this.croppingDialog.Text = "Crop";
 			this.croppingDialog.Visible = false;
 			// 
