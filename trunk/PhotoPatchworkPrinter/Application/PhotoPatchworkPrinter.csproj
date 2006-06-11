@@ -56,6 +56,7 @@
       <Project>{9BD962B6-70E9-4387-BD9E-0DAEE5C05EA0}</Project>
       <Name>PhotoPatchworkLibs</Name>
     </ProjectReference>
+    <Content Include="licence.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.Targets" />
 </Project>
