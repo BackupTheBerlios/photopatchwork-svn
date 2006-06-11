@@ -1,12 +1,4 @@
-﻿/*
- * Created by SharpDevelop.
- * User: ${USER}
- * Date: ${DATE}
- * Time: ${TIME}
- * 
- * To change this template use Tools | Options | Coding | Edit Standard Headers.
- */
-namespace PhotoPatchworkPrinter
+﻿namespace PhotoPatchworkPrinter
 {
 	partial class CroppingDialog : System.Windows.Forms.Form
 	{
@@ -72,6 +64,7 @@ namespace PhotoPatchworkPrinter
 			// SelectionPanel
 			// 
 			this.SelectionPanel.BackColor = System.Drawing.Color.Transparent;
+			this.SelectionPanel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
 			this.SelectionPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 			this.SelectionPanel.ForeColor = System.Drawing.Color.Red;
 			this.SelectionPanel.Location = new System.Drawing.Point(12, 12);

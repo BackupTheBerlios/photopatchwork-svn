@@ -15,6 +15,7 @@ namespace PhotoPatchworkPrinter
 		private float _imgRatio;
 		private float _fullImgRatio;
 		private float _dispRatio;
+		private bool _isLoading = true;
 		
 		public CroppingDialog()
 		{
@@ -23,20 +24,20 @@ namespace PhotoPatchworkPrinter
 
 		public ImageInfos ImageInfos { get { return this._imgInfos; } set { this._imgInfos = value; } }
 
-		void CroppingWindowLoad(object sender, System.EventArgs e)
-		{
-			Image img = Transforms.GetImageFromImageInfos(_imgInfos, false);
+		void CroppingWindowLoad(object sender, System.EventArgs e) {
+			this._isLoading = true;
+			Image img = Transforms.GetImageFromImageInfos(this._imgInfos, false);
 
 			if (this._imgInfos.Crop.Left == -1) {
-				this._imgInfos.Crop = Transforms.GetDefaultCropFromImageInfos(_imgInfos, img.Size);
+				this._imgInfos.Crop = Transforms.GetDefaultCropFromImageInfos(this._imgInfos, img.Size);
 			}
 
 			this._imgSize = img.Size;
 			
-			this._imgRatio = (float)_imgInfos.Size.Width / (float)_imgInfos.Size.Height;
+			this._imgRatio = (float)this._imgInfos.Size.Width / (float)this._imgInfos.Size.Height;
 			this._fullImgRatio = (float)img.Width / (float)img.Height;
 
-			
+
 			TrkBarLeft.Minimum = 0;
 			TrkBarTop.Minimum = 0;
 			TrkBarZoom.Minimum = 0;
@@ -57,17 +58,17 @@ namespace PhotoPatchworkPrinter
 			Size newSize = new Size(this.PicturePanel.Width, this.PicturePanel.Height);
 			float pnlRatio = (float)this.PicturePanel.Width / (float)this.PicturePanel.Height;
 			if (this._fullImgRatio > pnlRatio) {
-				newSize.Height = (int)(newSize.Width / this._fullImgRatio);
+				newSize.Height = (int)((float)newSize.Width / this._fullImgRatio);
+				this._dispRatio = (float)newSize.Width / (float)img.Width;
 			} else {
-				newSize.Width = (int)(newSize.Height * this._fullImgRatio);
+				newSize.Width = (int)((float)newSize.Height * this._fullImgRatio);
+				this._dispRatio = (float)newSize.Height / (float)img.Height;
 			}
-			this._dispRatio = (float)newSize.Width / (float)img.Width;
 
 			img = Transforms.Resize(img, newSize);
 			this.PicturePanel.BackgroundImage = img;
-
-			
-			this.RefreshSelection();
+			this._isLoading = false;
+			RefreshSelection();
 		}
 		
 		void RefreshSelection() {
@@ -89,10 +90,11 @@ namespace PhotoPatchworkPrinter
 			this.SelectionPanel.Width = (int)(width * _dispRatio);
 			this.SelectionPanel.Height = (int)(height * _dispRatio);
 		}
-		
+			
 		void BtnOkClick(object sender, System.EventArgs e) {
 			this.DialogResult = System.Windows.Forms.DialogResult.OK;
 			this.Close();
+			
 		}
 		
 		void BtnAnnulerClick(object sender, System.EventArgs e) {
@@ -101,7 +103,9 @@ namespace PhotoPatchworkPrinter
 		}
 
 		void TrkBarsValueChanged(object sender, System.EventArgs e) {
-			this.RefreshSelection();
+			if (!this._isLoading) {
+				this.RefreshSelection();
+			}
 		}
 		
 	}

@@ -1,12 +1,3 @@
-/*
- * Created by SharpDevelop.
- * User: ribouxj
- * Date: 18/05/2006
- * Time: 14:23
- * 
- * To change this template use Tools | Options | Coding | Edit Standard Headers.
- */
-
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -102,9 +93,9 @@ namespace PhotoPatchworkPrinter
 		{
 			PictureButton.PictureButton pb = (PictureButton.PictureButton)sender;
 			if (openFileDialog.ShowDialog() == DialogResult.OK) {
-				ImageInfos pi = pb.ImageInfos;
-				pi.Path = openFileDialog.FileName;
-				pb.ImageInfos = pi;
+				ImageInfos ii = pb.ImageInfos;
+				ii.Path = openFileDialog.FileName;
+				pb.ImageInfos = ii;
 			}
 		}
 
@@ -145,10 +136,10 @@ namespace PhotoPatchworkPrinter
 					pb.Open += new PictureButton.PictureButton.OpenEventHandler(this.PictureButtonOpen);
 					pb.Delete += new PictureButton.PictureButton.DeleteEventHandler(this.PictureButtonDelete);
 					pb.Crop += new PictureButton.PictureButton.CropEventHandler(this.PictureButtonCrop);
-					ImageInfos pis = new ImageInfos();
-					pis.Crop = new Rectangle(-1, -1, -1, -1);
-					pis.Size = new Size(PhotoSize.Width, PhotoSize.Height);
-					pb.ImageInfos = pis;
+					ImageInfos ii = new ImageInfos();
+					ii.Crop = new Rectangle(-1, -1, -1, -1);
+					ii.Size = new Size(PhotoSize.Width, PhotoSize.Height);
+					pb.ImageInfos = ii;
 					this.PicturesTable.Controls.Add(pb, col, row);
 				}
 			}

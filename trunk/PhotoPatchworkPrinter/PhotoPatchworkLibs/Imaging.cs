@@ -114,16 +114,16 @@ namespace PhotoPatchworkLibs
 		public static Rectangle GetDefaultCropFromImageInfos(ImageInfos ImgInfos, Size ImageSize) {
 			float srcRatio = ((float)ImageSize.Width)/((float)ImageSize.Height);
 			float destRatio = ((float)ImgInfos.Size.Width)/((float)ImgInfos.Size.Height);
-			float left=0;
-			float top=0;
-			float width=ImageSize.Width;
-			float height=ImageSize.Height;
+			float left = 0;
+			float top = 0;
+			float width = (float)ImageSize.Width;
+			float height = (float)ImageSize.Height;
 			if (srcRatio>destRatio) {//larger
-				width=(float)ImageSize.Height*destRatio;
-				left = ((float)ImageSize.Width-width)/(float)2;
+				width = height*destRatio;
+				left = ((float)ImageSize.Width-width)/2F;
 			} else {//taller
-				height=(float)ImageSize.Width/destRatio;
-				top = ((float)ImageSize.Height-height)/(float)2;
+				height = width/destRatio;
+				top = ((float)ImageSize.Height-height)/2F;
 			}
 			return new Rectangle((int)left, (int)top, (int)width, (int)height);
 		}
