@@ -42,16 +42,23 @@ namespace PhotoPatchworkPrinter
 			InitializeComponent();
 		}
 		
-		void BtnTestClick(object sender, System.EventArgs e)
+		private void TSBPreviewClick(object sender, System.EventArgs e)
 		{
+			// Set the PrintPreviewDialog.Document property to
+			// the PrintDocument object selected by the user.
+			printPreviewDialog.Document = this.document;
+
+			// Call the ShowDialog method. This will trigger the document's
+			//  PrintPage event.
 			printPreviewDialog.ShowDialog();
+
 		}
 		
-		void BtnAnnulerClick(object sender, System.EventArgs e) {
+		private void TSBExitClick(object sender, System.EventArgs e) {
 			Close();
 		}
 
-		void btnThumbClick(object sender, System.EventArgs e)
+		private void btnThumbClick(object sender, System.EventArgs e)
 		{
 			if (openFileDialog.ShowDialog() == DialogResult.OK) {
 				Button button = (Button)sender;
@@ -71,23 +78,23 @@ namespace PhotoPatchworkPrinter
 				button.Image = tImage;
 			}
 		}
-		public bool thumbnailCallback()
+		private bool thumbnailCallback()
 		{
 			return false;
 		}
 
-
-		private void document_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+		private void DocumentPrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
 		{
-			string text = "In document_PrintPage method.";
-			System.Drawing.Font printFont = new System.Drawing.Font("Arial", 35, System.Drawing.FontStyle.Regular);
-
-			e.Graphics.DrawString(text, printFont, System.Drawing.Brushes.Black, 0, 0);
-			System.Drawing.Image image = System.Drawing.Image.FromFile("C:\\Documents and Settings\\ribouxj\\Mes documents\\Mes images\\Athlète.jpg");
-			e.Graphics.DrawImage(image, 0, 0);
+			e.Graphics.PageUnit = GraphicsUnit.Millimeter;
+			foreach (ImageInfos ii in this.Template) {
+				if (ii.Path != null) {
+					Image image = Transforms.GetImageFromImageInfos(ii);
+					e.Graphics.DrawImage(image, ii.Region);
+				}
+			}
 		}
 		
-		void PictureButtonDelete(object sender, EventArgs e)
+		private void PictureButtonDelete(object sender, EventArgs e)
 		{
 			PictureButton.PictureButton pb = (PictureButton.PictureButton)sender;
 			ImageInfos pi = pb.ImageInfos;
@@ -95,7 +102,7 @@ namespace PhotoPatchworkPrinter
 			pb.ImageInfos = pi;
 		}
 		
-		void PictureButtonCrop(object sender, EventArgs e)
+		private void PictureButtonCrop(object sender, EventArgs e)
 		{
 			PictureButton.PictureButton pb = (PictureButton.PictureButton)sender;
 
@@ -106,7 +113,7 @@ namespace PhotoPatchworkPrinter
 			}
 		}
 		
-		void PictureButtonOpen(object sender, EventArgs e)
+		private void PictureButtonOpen(object sender, EventArgs e)
 		{
 			PictureButton.PictureButton pb = (PictureButton.PictureButton)sender;
 			if (openFileDialog.ShowDialog() == DialogResult.OK) {
@@ -116,50 +123,69 @@ namespace PhotoPatchworkPrinter
 			}
 		}
 
-		void MainFormLoad(object sender, System.EventArgs e)
+		private void MainFormLoad(object sender, System.EventArgs e)
 		{
-			this.resizePicturesTable(new Size(210, 297), new Size(40, 50));
+			// TODO add a zoom selector (or schrink page in window?)
+			float zoomFactor = 3F;
+			// TODO create a "New template" dialog, or a separated template editor?
+			// TODO add a PageSetup dialog to get page size and margins
+			this.resizePagePanel(new Size(210, 297), new Padding(10), zoomFactor);
+			this.Template = getEmptyGridTemplate(new Size(40, 50), new Padding(3), new Size(210, 297), new Padding(10));
+			this.refreshPageFromTemplate(Template, zoomFactor);
 		}
 		
 		/// <summary>
 		/// Lengths are given in milimeters.
 		/// </summary>
-		void resizePicturesTable(Size PageSize, Size PhotoSize) {
-			// TODO add margins (or directlty replace with page templates !!!)
-			int ncols = (int)((float)PageSize.Width/(float)PhotoSize.Width);
-			int nrows = (int)((float)PageSize.Height/(float)PhotoSize.Height);
-			float zoomFactor = 3F;
-			int picturePxWidth = (int)((float)PhotoSize.Width * zoomFactor);
-			int picturePxHeight = (int)((float)PhotoSize.Height * zoomFactor);
+		private void resizePagePanel(Size PageSize, Padding PageMargin, float zoomFactor) {
+			this.PagePanel.Size = new Size((int)((PageSize.Width - PageMargin.Left - PageMargin.Right) * zoomFactor),
+			                               (int)((PageSize.Height - PageMargin.Top - PageMargin.Bottom) * zoomFactor));
+			
+		}
+		
+		private static List<ImageInfos> getEmptyGridTemplate(Size PhotoSize, Padding PhotoMargin, Size PageSize, Padding PageMargin) {
+			// TODO add template creation
+			// TODO replace List<ImageInfos> with a real template class or struct
+			int ncols = (int)((float)(PageSize.Width - PageMargin.Left - PageMargin.Right)/(float)PhotoSize.Width);
+			int nrows = (int)((float)(PageSize.Height - PageMargin.Top - PageMargin.Bottom)/(float)PhotoSize.Height);
 
-			this.PicturesTable.ColumnCount = ncols;
-			this.PicturesTable.ColumnStyles.Clear();
-			for (int i=0; i<ncols; i++) {
-				this.PicturesTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, picturePxWidth+6F));
-			}
-			this.PicturesTable.RowCount = nrows;
-			for (int i=0; i<nrows; i++) {
-				this.PicturesTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, picturePxHeight+6F));
-			}
+			List<PhotoPatchworkLibs.ImageInfos> Template = new List<PhotoPatchworkLibs.ImageInfos>();
+			
 			for (int col=0; col<ncols; col++) {
 				for (int row=0; row<nrows; row++) {
-					PictureButton.PictureButton pb = new PictureButton.PictureButton();
-					pb.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) | System.Windows.Forms.AnchorStyles.Left) | System.Windows.Forms.AnchorStyles.Right)));
-					pb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-					pb.Location = new System.Drawing.Point(3, 3);
-					pb.Size = new System.Drawing.Size((int)picturePxWidth, (int)picturePxHeight);
-					pb.TabIndex = col+row*ncols;
-					pb.PictureClick += new PictureButton.PictureButton.PictureClickEventHandler(this.PictureButtonOpen);
-					pb.Open += new PictureButton.PictureButton.OpenEventHandler(this.PictureButtonOpen);
-					pb.Delete += new PictureButton.PictureButton.DeleteEventHandler(this.PictureButtonDelete);
-					pb.Crop += new PictureButton.PictureButton.CropEventHandler(this.PictureButtonCrop);
 					ImageInfos ii = new ImageInfos();
+					// TODO use isEmpty instead of -1 detection
 					ii.Crop = new Rectangle(-1, -1, -1, -1);
-					ii.Size = new Size(PhotoSize.Width, PhotoSize.Height);
-					pb.ImageInfos = ii;
-					this.PicturesTable.Controls.Add(pb, col, row);
+					ii.Region = new Rectangle((PhotoSize.Width + PhotoMargin.Left + PhotoMargin.Right) * col - PhotoMargin.Right,
+					                          (PhotoSize.Height + PhotoMargin.Top + PhotoMargin.Bottom) * row - PhotoMargin.Bottom,
+					                          PhotoSize.Width,
+					                          PhotoSize.Height);
+					Template.Add(ii);
 				}
 			}
+			
+			return Template;
 		}
+		
+		private void refreshPageFromTemplate(List<ImageInfos> Template, float zoomFactor) {
+			foreach (ImageInfos ii in Template) {
+				PictureButton.PictureButton pb = new PictureButton.PictureButton();
+				
+				pb.Anchor = ((System.Windows.Forms.AnchorStyles)(System.Windows.Forms.AnchorStyles.Top|System.Windows.Forms.AnchorStyles.Left));
+				pb.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+				pb.Location = new System.Drawing.Point((int)(ii.Region.Left * zoomFactor), (int)(ii.Region.Top * zoomFactor));
+				pb.Size = new System.Drawing.Size((int)(ii.Region.Width * zoomFactor), (int)(ii.Region.Height * zoomFactor));
+				// pb.TabIndex = col + row * ncols;
+				pb.ImageInfos = ii;
+				
+				pb.PictureClick += new PictureButton.PictureButton.PictureClickEventHandler(this.PictureButtonOpen);
+				pb.Open += new PictureButton.PictureButton.OpenEventHandler(this.PictureButtonOpen);
+				pb.Delete += new PictureButton.PictureButton.DeleteEventHandler(this.PictureButtonDelete);
+				pb.Crop += new PictureButton.PictureButton.CropEventHandler(this.PictureButtonCrop);
+				
+				this.PagePanel.Controls.Add(pb);
+			}
+		}
+
 	}
 }

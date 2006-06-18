@@ -36,7 +36,7 @@ namespace PhotoPatchworkLibs
 		/// <summary>
 		/// Size of the printed picture in milimeters
 		/// </summary>
-		public Size Size;
+		public Rectangle Region;
 
 		/// <summary>
 		/// Cropping area in pixels
@@ -130,7 +130,7 @@ namespace PhotoPatchworkLibs
 		
 		public static Rectangle GetDefaultCropFromImageInfos(ImageInfos ImgInfos, Size ImageSize) {
 			float srcRatio = ((float)ImageSize.Width)/((float)ImageSize.Height);
-			float destRatio = ((float)ImgInfos.Size.Width)/((float)ImgInfos.Size.Height);
+			float destRatio = ((float)ImgInfos.Region.Width)/((float)ImgInfos.Region.Height);
 			float left = 0;
 			float top = 0;
 			float width = (float)ImageSize.Width;

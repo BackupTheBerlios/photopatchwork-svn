@@ -45,7 +45,7 @@ namespace PictureButton
 		
 		public PictureButton() {
 			InitializeComponent();
-			this._ImageInfos.Size = new Size(0, 0);
+			this._ImageInfos.Region = new Rectangle(0, 0, 0, 0);
 			this._ImageInfos.Crop = new Rectangle(-1,-1,-1,-1);
 			this._ImageInfos.Flip = Flips.None;
 			this._ImageInfos.Rotate = Rotations.Deg0;

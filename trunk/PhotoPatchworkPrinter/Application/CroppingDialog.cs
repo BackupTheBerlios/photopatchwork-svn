@@ -43,6 +43,11 @@ namespace PhotoPatchworkPrinter
 
 		void CroppingWindowLoad(object sender, System.EventArgs e) {
 			this._isLoading = true;
+			if (this._imgInfos.Path == null) {
+				this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+				this.Close();
+			}
+			
 			Image img = Transforms.GetImageFromImageInfos(this._imgInfos, false);
 
 			if (this._imgInfos.Crop.Left == -1) {
@@ -51,7 +56,7 @@ namespace PhotoPatchworkPrinter
 
 			this._imgSize = img.Size;
 			
-			this._imgRatio = (float)this._imgInfos.Size.Width / (float)this._imgInfos.Size.Height;
+			this._imgRatio = (float)this._imgInfos.Region.Width / (float)this._imgInfos.Region.Height;
 			this._fullImgRatio = (float)img.Width / (float)img.Height;
 
 
