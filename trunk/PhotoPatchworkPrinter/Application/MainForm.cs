@@ -86,7 +86,8 @@ namespace PhotoPatchworkPrinter
 		private void DocumentPrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
 		{
 			e.Graphics.PageUnit = GraphicsUnit.Millimeter;
-			foreach (ImageInfos ii in this.Template) {
+			foreach (Control pb in this.PagePanel.Controls) {
+				ImageInfos ii = ((PictureButton.PictureButton)pb).ImageInfos;
 				if (ii.Path != null) {
 					Image image = Transforms.GetImageFromImageInfos(ii);
 					e.Graphics.DrawImage(image, ii.Region);
